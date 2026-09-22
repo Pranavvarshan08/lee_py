@@ -5,12 +5,20 @@ class Solution:
         dividend =abs(dividend)
         divisor=abs(divisor)
 
-        count =0
+        result =0
 
         while dividend >= divisor:
-            dividend -= divisor
-            count +=1
+            temp=divisor
+            count=1
 
-        if sign == -1:
-            return -count
-        return count
+            while dividend >= temp <<1:
+                temp <<=1
+                count <<=1
+            dividend -=temp
+            result +=count
+
+        result = result if sign ==1 else -result
+
+        if result >2**31 -1:
+            return 2**31-1
+        return result
